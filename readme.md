@@ -37,6 +37,7 @@ This project uses **OpenAI GPT-4** and AI-generated images to enrich product cat
 - OpenAI API (Chat + DALL·E)
 - HTML + CSS
 - JavaScript
+- SOLID Patterns
 
 ---
 
