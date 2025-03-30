@@ -26,7 +26,7 @@ This project uses **OpenAI GPT-4** and AI-generated images to enrich product cat
 
 ## 🖼 Preview
 
-![preview](./public/example.png) <!-- Replace with your actual image -->
+![preview](./public/example.png) 
 
 ---
 
