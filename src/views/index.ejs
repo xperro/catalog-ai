@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Catálogo AI</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script defer src="/loader.js"></script>
+</head>
+<body>
+  <h1 style="text-align:center">🧠 Generador de Producto con IA</h1>
+
+  <form action="/generar" method="post">
+    <label>📝 Nombre del producto:</label>
+    <input type="text" name="nombre" required>
+
+    <label>📂 Categoría:</label>
+    <input type="text" name="categoria" required>
+
+    <label>✨ Características (separadas por coma):</label>
+    <input type="text" name="caracteristicas" required>
+
+    <button type="submit">Generar con IA</button>
+
+    <div id="loader" class="loader" style="display: none;">⏳ Generando contenido...</div>
+  </form>
+
+  <% if (resultado && resultado.titulo) { %>
+    <div class="resultado">
+      <h2>🛍 Vista enriquecida del producto</h2>
+      <div class="card">
+        <h3><%= resultado.titulo %></h3>
+
+        <p><strong>📝 Descripción:</strong><br><br><%= resultado.descripcion %></p>
+        <p><strong>📄 Meta descripción:</strong><br><br><%= resultado.meta %></p>
+
+        <% if (resultado.keywords?.length) { %>
+          <p><strong>🔑 Palabras clave:</strong><br><br><em><%= resultado.keywords.join(', ') %></em></p>
+        <% } %>
+
+        <% if (resultado.especificaciones?.length) { %>
+          <p><strong>🔧 Especificaciones técnicas:</strong></p>
+          <pre><%- resultado.especificaciones.join('<br>') %>
+          </pre>
+        <% } %>
+
+        <% if (resultado.beneficios?.length) { %>
+          <p><strong>💡 Beneficios del producto:</strong></p>
+          <pre><%- resultado.beneficios.join('<br>') %>
+          </pre>
+        <% } %>
+
+        <% if (resultado.medidas) { %>
+          <p><strong>📐 Medidas:</strong> <%= resultado.medidas %></p>
+        <% } %>
+
+        <% if (resultado.peso) { %>
+          <p><strong>⚖️ Peso:</strong> <%= resultado.peso %></p>
+        <% } %>
+
+        <% if (resultado.colores?.length) { %>
+          <p><strong>🎨 Colores disponibles:</strong> <%= resultado.colores.join(', ') %></p>
+        <% } %>
+
+        <% if (resultado.precioEstimado) { %>
+          <p><strong>💰 Precio estimado:</strong> <%= resultado.precioEstimado %></p>
+        <% } %>
+
+        <% if (resultado.materiales?.length) { %>
+          <p><strong>🔩 Materiales:</strong> <%= resultado.materiales.join(', ') %></p>
+        <% } %>
+
+        <% if (resultado.compatibilidad) { %>
+          <p><strong>🔌 Compatibilidad:</strong> <%= resultado.compatibilidad %></p>
+        <% } %>
+
+        <% if (resultado.garantia) { %>
+          <p><strong>🛡️ Garantía:</strong> <%= resultado.garantia %></p>
+        <% } %>
+
+        <% if (resultado.instrucciones) { %>
+          <p><strong>📘 Instrucciones:</strong> <%= resultado.instrucciones %></p>
+        <% } %>
+
+        <% if (resultado.recomendaciones) { %>
+          <p><strong>💡 Recomendaciones:</strong> <%= resultado.recomendaciones %></p>
+        <% } %>
+      </div>
+    </div>
+  <% } %>
+
+  <% if (imagenUrl) { %>
+    <div class="resultado">
+      <h3>📸 Imagen generada por IA</h3>
+      <img src="<%= imagenUrl %>" alt="Producto generado por IA" class="imagen" />
+    </div>
+  <% } %>
+</body>
+</html>
